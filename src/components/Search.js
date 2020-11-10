@@ -1,14 +1,6 @@
 import React, {useState} from 'react';
 
-const Search = () => {
-  const [username, setUsername] = useState("");
-
-  const handleChange = (event) => {
-    let username = event.target.value;
-    if (username !== "")
-      setUsername(username);
-  }
-
+const Search = ({username, handleChange}) => {
   function xhttpReq(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = ()=> {

@@ -1,11 +1,9 @@
 import React from 'react';
 
-const History = ({username})=> {
-  var preUsernames = new Set();
-  preUsernames.add(username);
+const History = ({prevUN})=> {
   return(
     <ul>
-      {preUsernames.map((value, index)=>{
+      {prevUN.map((value, index)=>{
         return <li key={index}>{value}</li>
       })}
     </ul>

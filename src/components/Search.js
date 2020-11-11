@@ -1,27 +1,13 @@
 import React, {useState} from 'react';
 
-const Search = ({username, handleChange}) => {
-  function xhttpReq(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = ()=> {
-      if (this.readyState === 4 && this.status === 200) {
-        let userInfo = JSON.parse(xhttp.responseText);
-        if(Object.keys(userInfo).length){
-          console.log(xhttp.responseText);
-          console.log({username});
-        }
-        else{
-          alert("the user does not have any public repos");
-        }
-      }
-    };
-    xhttp.open("GET", `https://api.github.com/users/${username}/events/public`, true);
-    xhttp.send();
-  }
+const Search = ({username, handleChange, xhttpReq, setPrevUN}) => {
+  
   const enterPressed = (event) => {
     var code = event.keyCode || event.which;
     if(code === 13) {
       xhttpReq();
+      var usrList = new Set([...username]);
+      setPrevUN(usrList);
     }
   }
   return(

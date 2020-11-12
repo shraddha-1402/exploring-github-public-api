@@ -1,21 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Search = ({username, handleChange, xhttpReq, setPrevUN}) => {
-  
-  const enterPressed = (event) => {
-    var code = event.keyCode || event.which;
-    if(code === 13) {
-      xhttpReq();
-      var usrList = new Set([...username]);
-      setPrevUN(usrList);
-    }
-  }
+const Search = ({handleChange, enterPressed, xhttpReq}) => {
   return(
     <div>
       <div><h3>Search:</h3></div>
       <div>
         <input type="text" name="username" onChange={handleChange} onKeyPress={enterPressed}/>
-        <button onClick={()=>{xhttpReq()}}>CLICK THIS</button>
+        <button onClick={xhttpReq}>CLICK THIS</button>
       </div>
     </div>
   )

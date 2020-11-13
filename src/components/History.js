@@ -1,16 +1,19 @@
 import React from 'react';
 
-const History = ({prevUN})=> {
+const History = ({usrArray})=> {
   // console.log(typeof(prevUN));
   // console.log(prevUN);
   // const previousvUN = JSON.parse({prevUN});
+  let usrList = new Set(usrArray);
+  let tmpUsrList = [...usrList];
+  console.log(typeof(tmpUsrList))
   return(
+    <div>
+    <label>History</label>
     <ul>
-      List will appear here
-      {/* {previousvUN.forEach(item =>{
-        return(<li>{item.value}</li>)
-      })} */}
+      
     </ul>
+  </div>
   )
 }
 

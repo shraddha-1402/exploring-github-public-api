@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 import Search from './components/Search';
-import History from './components/History';     
+import History from './components/History'; 
+// import uuid from 'uuid/dist/v4';    
 
 const App = () => {
   const [username, setUsername] = useState("");
-  // let emptyUsrList = [];
-  const [prevUN, setPrevUN] = useState([]);
+  const [usrArray, setUsrArray] = useState([]);
   
-  var usrList = new Set([]);
-
   const handleChange = (event) => {
     // console.log(prevUN);
     // console.log(typeof(prevUN));
@@ -40,9 +38,12 @@ const App = () => {
     var code = event.keyCode || event.which;
     if(code === 13) {
       xhttpReq();
-      // let tempUsrList = username;
-      usrList.add(...usrList, username);
-      setPrevUN(...usrList);
+      // tempUsrList.push(username);
+      // console.log(tempUsrList);
+      setUsrArray([...usrArray, username]);
+      // var usrList = new Set(usrArray);
+      // console.log(usrList);
+      // setPrevUN(usrList);
     }
   }
   // var it = s.values(), val= null; val=it.next().value; 
@@ -65,7 +66,7 @@ const App = () => {
         enterPressed={enterPressed} 
         xhttpReq={xhttpReq}
       />
-      <History prevUN={prevUN} xhttpReq={xhttpReq}/>
+      <History usrArray={usrArray} xhttpReq={xhttpReq}/>
     </div>
   );
 }

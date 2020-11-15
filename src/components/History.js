@@ -1,20 +1,20 @@
 import React from 'react';
+import '../App.css';
 
-const History = ({usrArray})=> {
-  // console.log(typeof(prevUN));
-  // console.log(prevUN);
-  // const previousvUN = JSON.parse({prevUN});
+const History = ({usrArray, xhttpReq})=> {
   let usrList = new Set(usrArray);
-  let tmpUsrList = [...usrList];
-  console.log(typeof(tmpUsrList))
+  usrList = [...usrList];
+
   return(
     <div>
     <label>History</label>
-    <ul>
-      
-    </ul>
+    <div>
+      {usrList.map((item, index) => {
+        return <div key={index} onClick={xhttpReq} className="searchUsrName" >{item}</div>
+      })}
+    </div>
   </div>
   )
 }
 
-export default History;
+export default History; 

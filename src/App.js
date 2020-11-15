@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Search from './components/Search';
 import History from './components/History'; 
@@ -6,7 +6,13 @@ import History from './components/History';
 const App = () => {
   const [username, setUsername] = useState("");
   const [usrArray, setUsrArray] = useState([]);
+  const [usrInfo, setUsrInfo] = useState();
+  const [infoLoaded, setInfoLoaded] = useState({show: false});
   
+  useEffect(()=>{
+    setInfoLoaded({show: true});
+  },[usrInfo]);
+
   const handleChange = (event) => {
     let username = event.target.value;
     if (username !== "")
@@ -20,6 +26,8 @@ const App = () => {
         let userInfo = JSON.parse(xhttp.responseText);
         if(Object.keys(userInfo).length){
           console.log({username});
+          console.log(userInfo);
+          setUsrInfo({name: "atharva"});
           setUsrArray([...usrArray, username]);
         }
         else{
@@ -41,6 +49,8 @@ const App = () => {
 
   return (
     <div className="App">
+      {console.log(infoLoaded.show)}
+      {infoLoaded.show && console.log("displaying content and scrolled")}
       <Search 
         handleChange={handleChange} 
         enterPressed={enterPressed} 

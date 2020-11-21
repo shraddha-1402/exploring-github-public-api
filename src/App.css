@@ -41,3 +41,9 @@
   color: blue;
   cursor: pointer;
 }
+
+.display-info{
+  background-color: burlywood;
+  margin-top: 600px;
+  margin-bottom: 600px;
+}
